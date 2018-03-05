@@ -395,45 +395,17 @@
 
       
         
-          
-            <ol>
-<li><p>插入排序。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//方式一：</span><br><span class="line">int arr = &#123;3,11,6,22,1,44&#125;;</span><br><span class="line">for(int i=1; i&lt;arr.length; i++)&#123;</span><br><span class="line">    int temp = arr[i];</span><br><span class="line">    int j = i;</span><br><span class="line">    while(j&gt;0&amp;&amp;arr[j-1]&gt;temp)&#123;//前面的数大于i处的值就往后覆盖，一直到temp的值比这个值小的时候停止</span><br><span class="line">        arr[j] = arr[j-1];</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[j] = temp;//把temp的值赋给前面元素比它大的位置</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">//方式二</span><br><span class="line">for(int i = 1; i&lt;arr.length; i++)&#123;</span><br><span class="line">    for(int j=0;j&lt;i;j++)&#123;</span><br><span class="line">        if(arr[j]&gt;arr[i])&#123;</span><br><span class="line">            int temp = arr[i];</span><br><span class="line">            for(int k=i;k&gt;j;k--)&#123;</span><br><span class="line">                arr[k] = arr[k-1];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>有序数组的二分查找。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class BinarySearch &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = &#123;1, 5, 7, 12, 19, 22, 25, 29, 33&#125;;</span><br><span class="line">        int start = 0;</span><br><span class="line">        int end = arr.length-1;</span><br><span class="line">        int middle;</span><br><span class="line">        int value = 25;</span><br><span class="line"></span><br><span class="line">        while (start&lt;end) &#123;</span><br><span class="line">            middle = (start + end) / 2;</span><br><span class="line"></span><br><span class="line">            if (arr[middle] == value) &#123;</span><br><span class="line">                System.out.println(middle);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            if (arr[middle] &gt; value) &#123;</span><br><span class="line">                end = middle-1;</span><br><span class="line">            &#125;</span><br><span class="line">            if (arr[middle] &lt; value) &#123;</span><br><span class="line">                start = middle+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>数组工具的使用</p>
-<ul>
-<li>System.arraycopy(src,srcPos,dest,destPos,length)<pre><code>原数组，开始复制的位置，目标数组，目标数组的复制的位置，复制的长度
-</code></pre></li>
-<li>Arrays.toString</li>
-<li>sort/parallelSort 快速排序、并行排序，数组中如果不存在被查找的元素就返回应该插入的位置</li>
-<li>binarySearch</li>
-<li>equals 比较的是数组元素个数，和值</li>
-<li>fill 填充数组</li>
-<li>copyOf</li>
-<li><p>conOfRange</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// Arrays   0   1  2  3  4</span><br><span class="line">int[] arr = &#123;56,1,78,345,11&#125;;</span><br><span class="line">//把数组转换成 字符串</span><br><span class="line">System.out.println(Arrays.toString(arr));</span><br><span class="line">//排序 升序</span><br><span class="line">//		Arrays.sort(arr);</span><br><span class="line">System.out.println(Arrays.toString(arr));</span><br><span class="line">//数组，起始位置，终止位置（实际是取到 终止位置 -1） [起始位置，终止位置)</span><br><span class="line">Arrays.sort(arr, 2, 5);</span><br><span class="line">System.out.println(Arrays.toString(arr));</span><br><span class="line">//多核处理器下，并行操作效率高</span><br><span class="line">Arrays.parallelSort(arr);</span><br><span class="line">System.out.println(Arrays.toString(arr));</span><br><span class="line">//查找 下标  ，找不到返回 -插入点 -1 的值</span><br><span class="line">System.out.println(Arrays.binarySearch(arr, 57));</span><br><span class="line">int[] arr1 = &#123;1,2,5,56&#125;;</span><br><span class="line">int[] arr2 = &#123;1,2,5&#125;;</span><br><span class="line">//数组比较 :元素的个数 和对应位置的数组元素相同</span><br><span class="line">boolean bool = Arrays.equals(arr1, arr2);</span><br><span class="line">System.out.println(bool);</span><br><span class="line">//fill填充 </span><br><span class="line">Arrays.fill(arr, 777);</span><br><span class="line">System.out.println(Arrays.toString(arr));		</span><br><span class="line">//数组的复制                              （要复制的数组，几个元素）</span><br><span class="line">int[] arr3 = Arrays.copyOf(arr1,2);</span><br><span class="line">System.out.println(Arrays.toString(arr3));</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>二维数组的存储方式</p>
-<ol>
-<li><p>数组本质上只有一维数组，也就是说，在二维数组中，arr[i]中存储的是地址值，指向arr[i][j]的地址，arr[i][j]中存储的才是数值。</p>
-</li>
-<li><p>二维数组可以理解为一个表的行和列</p>
-</li>
-<li><p>利用不规则的二维数组存储杨辉三角</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int[][] arr = new arr[8][];</span><br><span class="line">for(int i=0; i&lt;arr.length; i++)&#123;</span><br><span class="line">    arr[i] = new int[i+1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for(int i=0; i&lt;arr.length; i++)&#123;</span><br><span class="line">    for(int j=0; j&lt;arr[i].length; j++)&#123;</span><br><span class="line">        if(j==0||j==i)&#123;</span><br><span class="line">            arr[i][j] = 1</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            arr[i][j] = arr[i-1]arr[j-1]+arr[i-1][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <ol>
+<li>插入排序。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//方式一：</span><br><span class="line">int arr = &#123;3,11,6,22,1,44&#125;;</span><br><span class="line">for(int i=1; i&lt;arr.length; i++)&#123;</span><br><span class="line">    int temp = arr[i];</span><br><span class="line">    int j = i;</span><br><span class="line">    while(j&gt;0&amp;&amp;arr[j-1]&gt;temp)&#123;//前面的数大于i处的值就往后覆盖，一直到temp的值比这个值小的时候停止</span><br><span class="line">        arr[j] = arr[j-1];</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[j] = temp;//把temp的值赋给前面元素比它大的位置</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式二</span><br><span class="line">for(int i = 1; i&lt;arr.length; i++)&#123;</span><br><span class="line">    for(int j=0;j&lt;i;j++)&#123;</span><br><span class="line">        if(arr[j]&gt;arr[i])&#123;</span><br><span class="line">            int temp = arr[i];</span><br><span class="line">            for(int k=i;k&gt;j;k--)&#123;</span><br><span class="line">                arr[k] = arr[k-1];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-</li>
-<li><p>面向对象的思想</p>
-</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/18/插入排序，二分查找，二维数组，杨辉三角，数组工具/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -572,34 +544,20 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>现在很流行一万小时定律，就是你要在某个领域成为专家那只需要在这个领域经过一万小时的练习就可以了。那真的是这样的吗？真的需要一万小时吗？一万小时就会成为专家吗？其实这都不一定，就像一个出租车司机，已经积累了1万小时的里程但是他还是成为不了赛车手一样。罗辑思维的是这期节目告诉你到底应该怎么做才能练成一个高手。建议在原文链接里看完这期节目后再回来看这篇文章会收获更大。</p>
 </blockquote>
 <h2 id="怎样成为一个高手——刻意练习"><a href="#怎样成为一个高手——刻意练习" class="headerlink" title="怎样成为一个高手——刻意练习"></a>怎样成为一个高手——刻意练习</h2><h3 id="一、练习——针对性重复练习。"><a href="#一、练习——针对性重复练习。" class="headerlink" title="一、练习——针对性重复练习。"></a>一、练习——针对性重复练习。</h3><ol>
 <li>套路，拿来主义。 前人的知识封装成一个知识罐头，抽象为简洁的东西，拿来就用。<br>最重要的套路：<br> 行业经验，书本上找不到，而是行业前辈总结出的经验。找老司机学套路。<br> 学科的概念，一个学科是靠几个大的概念堆出来的，要围绕着这些大的概念把他们弄清楚。经济学20世纪最重要的概念就是发现了交易成本，物理学是发现了熵。只要你了解这些概念清晰的内涵和外延，你就能把这个学科整坨的知识拿到手。</li>
 <li>拆解练习。不能以赛代练，要要把大的知识体系拆碎成为一个个小模块，一个个小知识罐头，分别练习。</li>
-<li>最重要的事是——重复。</li>
-</ol>
-<h3 id="二、刻意——持续做你不会做的事"><a href="#二、刻意——持续做你不会做的事" class="headerlink" title="二、刻意——持续做你不会做的事"></a>二、刻意——持续做你不会做的事</h3><ul>
-<li>三个区域的划分：舒适区—学习区—恐慌区</li>
-</ul>
-<ol>
-<li><p>学习区：脱离舒适区。</p>
-<p> 农耕时代的勤奋苦练就能成为高手的技能如刀削面师傅等待在现代社会是简单技能，但是现在社会是分工合作的复杂体，要掌握的技能是综合性的复杂技能，不能一味停留在舒适区不能自拔。真正会读书的人是看对自己有挑战的书的人，这种人才是真正有效的。高手是不会让自己进入下意识状态。永远挑战意外永远不会允许自己失控。</p>
-</li>
-<li><p>被动的脱离舒适区，进入学习区</p>
-<p> 好的学习环境，是能获得即使反馈的环境。每一个微小的进步，外界环境都给你一个反馈告诉你对错，是否要继续练习。要建立即时反馈系统。</p>
-</li>
-<li>总结：学习的本质就是脱离舒服，没有轻松省力的捷径，学习注定是痛苦的。</li>
-</ol>
-<h3 id="三、学习的真相"><a href="#三、学习的真相" class="headerlink" title="三、学习的真相"></a>三、学习的真相</h3><ol>
-<li>互联网的信息结构是超文本连接而不是学习。他要人不断的做决策，做选择，而这些决策是被别人引诱而做出来的。（谷歌的核心战略的让用户快进快出），选择是由前额叶做出的，选择并不是在学习。</li>
-<li>真正的学习是，不断把新的信息和自身原有的信息结构做缝接，高手的特点就是任何获得的新信息马上能和自己大脑中长期存储的记忆建立联系，信息群被迅速同时激活。做笔记是把学到的东西和自己的知识结构做缝接的过程。收藏的文字要写心得，这是为了与新知识形成互动，把新知识缝接到我原来的知识结构上。知识，是信息之间形成结构进入我们的大脑库存，这个库存不是装东西的存，而是一种体系结构，知识是一种生长出来带结构的东西。</li>
-<li>怎样使用工具。有了互联网，人类让自己堕落的更浅薄。我们不能躺在工具产生的便利性上睡大觉挥霍时间在舒适区享受，而是要踏着新工具新技术进一步探索世界，开拓新边疆，向学习区进发。</li>
-</ol>
-
-          
+<li>最重要的事是——重复。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/26/怎样成为一个高手/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -740,7 +698,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cjecwwlsp000754nldt0wom78"
+                 href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cjecx9zbl0002mgnlut1by4gc"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="contentUrl"/>
               </a>
