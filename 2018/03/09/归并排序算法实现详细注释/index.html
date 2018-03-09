@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="排序,算法,java," />
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="J-Box:80">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="归并排序的思想：分而治之。把一个庞大的数列从中间切分成两个，再分别对这两个数列排序，排序完后再合并，效率会比直接排序高。 那进一步把左右两边不断切分下去，效率也就会越高，切到只剩下一个元素是就不用再进行排序了。这是递归的思想，这就是所谓的归。 合并思想：把一个无序数列，从中间分开，分成左右两边，并递归的对左边和右边进行切分，直到到只剩下一个元素，这时一个元素的序列是有序的，不要再排序了，只需要向上">
+<meta name="keywords" content="排序,算法,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="归并排序算法实现详细注释">
+<meta property="og:url" content="http://yoursite.com/2018/03/09/归并排序算法实现详细注释/index.html">
 <meta property="og:site_name" content="J-Box:80">
+<meta property="og:description" content="归并排序的思想：分而治之。把一个庞大的数列从中间切分成两个，再分别对这两个数列排序，排序完后再合并，效率会比直接排序高。 那进一步把左右两边不断切分下去，效率也就会越高，切到只剩下一个元素是就不用再进行排序了。这是递归的思想，这就是所谓的归。 合并思想：把一个无序数列，从中间分开，分成左右两边，并递归的对左边和右边进行切分，直到到只剩下一个元素，这时一个元素的序列是有序的，不要再排序了，只需要向上">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://www.zhinengl.com/wp-content/uploads/2017/02/algorithms.jpg">
+<meta property="og:updated_time" content="2018-03-09T13:59:59.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="J-Box:80">
+<meta name="twitter:title" content="归并排序算法实现详细注释">
+<meta name="twitter:description" content="归并排序的思想：分而治之。把一个庞大的数列从中间切分成两个，再分别对这两个数列排序，排序完后再合并，效率会比直接排序高。 那进一步把左右两边不断切分下去，效率也就会越高，切到只剩下一个元素是就不用再进行排序了。这是递归的思想，这就是所谓的归。 合并思想：把一个无序数列，从中间分开，分成左右两边，并递归的对左边和右边进行切分，直到到只剩下一个元素，这时一个元素的序列是有序的，不要再排序了，只需要向上">
+<meta name="twitter:image" content="https://www.zhinengl.com/wp-content/uploads/2017/02/algorithms.jpg">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/09/归并排序算法实现详细注释/"/>
 
 
 
 
 
-  <title>J-Box:80</title>
+  <title>归并排序算法实现详细注释 | J-Box:80</title>
   
 
 
@@ -150,8 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,9 +284,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -310,9 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/归并排序算法实现详细注释/" itemprop="url">归并排序算法实现详细注释</a></h1>
+          <h1 class="post-title" itemprop="name headline">归并排序算法实现详细注释</h1>
         
 
         <div class="post-meta">
@@ -400,19 +404,11 @@
       
 
       
-        
-          <p>归并排序的思想：分而治之。<br>把一个庞大的数列从中间切分成两个，再分别对这两个数列排序，排序完后再合并，效率会比直接排序高。</p>
+        <p>归并排序的思想：分而治之。<br>把一个庞大的数列从中间切分成两个，再分别对这两个数列排序，排序完后再合并，效率会比直接排序高。</p>
 <p>那进一步把左右两边不断切分下去，效率也就会越高，切到只剩下一个元素是就不用再进行排序了。<br>这是<strong>递归</strong>的思想，这就是所谓的<strong>归</strong>。</p>
 <p>合并思想：把一个无序数列，从中间分开，分成左右两边，并递归的对左边和右边进行切分，直到到只剩下一个元素，这时一个元素的序列是有序的，不要再排序了，只需要向上和其盘边的序列进行<strong>合并</strong>就行了这就是<strong>并</strong>。</p>
-<p>这里整理了一份归并排序的代码并写了详细的注释。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/09/归并排序算法实现详细注释/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<p>这里整理了一份归并排序的代码并写了详细的注释。<br><a id="more"></a><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MergeSort</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;<span class="comment">// 初始化一个数组</span></span><br><span class="line">		<span class="keyword">int</span>[] intArray = &#123;<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">10</span>,<span class="number">13</span>,<span class="number">4</span>,<span class="number">15</span>,<span class="number">6</span>,<span class="number">13</span>,<span class="number">20</span>,<span class="number">11</span>&#125;;</span><br><span class="line">		<span class="comment">// 先打印未排序的数组</span></span><br><span class="line">		System.<span class="keyword">out</span>.println(Arrays.toString(intArray));</span><br><span class="line">		<span class="comment">// 归并排序</span></span><br><span class="line">		mergeSort(intArray);</span><br><span class="line">		<span class="comment">// 打印排序好了的数组</span></span><br><span class="line">		System.<span class="keyword">out</span>.println(Arrays.toString(intArray));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span>(<span class="params"><span class="keyword">int</span> a[]</span>)</span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 为什么要给定下标范围：</span></span><br><span class="line"><span class="comment">		 * 	 要把一个序列分而治之，需要分别对他的左边和右边切分</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		mergesort(a,<span class="number">0</span>,a.length<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 递归方法：</span></span><br><span class="line"><span class="comment">	 * 	递归的对数组进行对半切分</span></span><br><span class="line"><span class="comment">	 * @param a	要排序的数组</span></span><br><span class="line"><span class="comment">	 * @param first	要排序的数组起始位置</span></span><br><span class="line"><span class="comment">	 * @param last	要排序的数组的终止位置</span></span><br><span class="line"><span class="comment">	 * 以两个元素为例进行递归演示：</span></span><br><span class="line"><span class="comment">	 *    mergesort&#123;1,2&#125;,0,1</span></span><br><span class="line"><span class="comment">	 * 	    mid = 0</span></span><br><span class="line"><span class="comment">	 * 	    mergesort(&#123;1,2&#125;,0,0)---first=last出递归</span></span><br><span class="line"><span class="comment">	 * 	    mergesort(&#123;1,2&#125;,1,1)---first=last出递归</span></span><br><span class="line"><span class="comment">	 * 	    mergearray(&#123;1,2&#125;,0,0,1)---放入切分的中间标记，数组左右两边进行合并</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergesort</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> first, <span class="keyword">int</span> last</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(first&lt;last)&#123;<span class="comment">//递归出口，first=last，只有一个元素时返回继续向下执行</span></span><br><span class="line">			<span class="comment">/**</span></span><br><span class="line"><span class="comment">			 * 为什么不能用a.leng/2呢？</span></span><br><span class="line"><span class="comment">			 * 	在递归调用时传的是都是原始数组a，如果用leng的话mid值不会变，</span></span><br><span class="line"><span class="comment">			 * 	起不到切分的作用</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			<span class="keyword">int</span> mid = (first+last)/<span class="number">2</span>;</span><br><span class="line">			mergesort(a,first,mid);</span><br><span class="line">			mergesort(a,mid+<span class="number">1</span>,last);</span><br><span class="line">			mergearray(a,first,mid,last);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 合并方法：</span></span><br><span class="line"><span class="comment">	 * 	把一个数组切分后有序的两端进行合并</span></span><br><span class="line"><span class="comment">	 * @param a	原始数组</span></span><br><span class="line"><span class="comment">	 * @param first	要合并的左边数组的开始位置</span></span><br><span class="line"><span class="comment">	 * @param mid	切分点</span></span><br><span class="line"><span class="comment">	 * @param last	要合并的右边数组末尾位置</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergearray</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> first, <span class="keyword">int</span> mid, <span class="keyword">int</span> last</span>) </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 临时数组用于存放有序元素</span></span><br><span class="line"><span class="comment">		 * 为什么不用int[a.length]创建？</span></span><br><span class="line"><span class="comment">		 * 	因为每次合并的只是a的一部分而已，这样做可以节省空间</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[last+<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> i = first;<span class="comment">//左边数组起始位置</span></span><br><span class="line">		<span class="keyword">int</span> j = mid+<span class="number">1</span>;<span class="comment">//右边数组起始位置</span></span><br><span class="line">		<span class="keyword">int</span> m = mid;<span class="comment">//左边数组终止位置</span></span><br><span class="line">		<span class="keyword">int</span> n = last;<span class="comment">//右边数组终止位置</span></span><br><span class="line">		<span class="keyword">int</span> k = <span class="number">0</span>;<span class="comment">//临时数组的指针</span></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 比较两个数组栈顶元素大小，把小的存入临时数组</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">while</span>(i&lt;=m&amp;&amp;j&lt;=n)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=a[j])</span><br><span class="line">				temp[k++] = a[i++];</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				temp[k++] = a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 分别把两个数组剩下的元素存入临时数组</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">while</span>(i&lt;=m)&#123;</span><br><span class="line">			temp[k++]=a[i++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(j&lt;=n)&#123;</span><br><span class="line">			temp[k++] = a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 把临时数组的值赋给原来的数组</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;k;i++)&#123;</span><br><span class="line">			a[first+i] = temp[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -427,478 +423,40 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/18/插入排序，二分查找，二维数组打印杨辉三角/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/a.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J-Box:80">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/18/插入排序，二分查找，二维数组打印杨辉三角/" itemprop="url">插入排序，二分查找，二维数组打印杨辉三角</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T20:33:44+08:00">
-                2017-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/排序/" rel="tag"># 排序</a>
           
-
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
-            
+            <a href="/tags/java/" rel="tag"># java</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li>插入排序。<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式一：</span></span><br><span class="line"><span class="type">int</span> arr = &#123;<span class="number">3</span>,<span class="number">11</span>,<span class="number">6</span>,<span class="number">22</span>,<span class="number">1</span>,<span class="number">44</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;arr.<span class="built_in">length</span>; i++)&#123;</span><br><span class="line">    <span class="type">int</span> temp = arr[i];</span><br><span class="line">    <span class="type">int</span> j = i;</span><br><span class="line">    <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;&amp;arr[j<span class="number">-1</span>]&gt;temp)&#123;<span class="comment">//前面的数大于i处的值就往后覆盖，一直到temp的值比这个值小的时候停止</span></span><br><span class="line">        arr[j] = arr[j<span class="number">-1</span>];</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[j] = temp;<span class="comment">//把temp的值赋给前面元素比它大的位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式二</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i&lt;arr.<span class="built_in">length</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[j]&gt;arr[i])&#123;</span><br><span class="line">            <span class="type">int</span> temp = arr[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=i;k&gt;j;k--)&#123;</span><br><span class="line">                arr[k] = arr[k<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/18/插入排序，二分查找，二维数组打印杨辉三角/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/26/怎样做到100分/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/a.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J-Box:80">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/26/怎样做到100分/" itemprop="url">怎样做到100分</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T07:33:44+08:00">
-                2017-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/社会科学/" itemprop="url" rel="index">
-                    <span itemprop="name">社会科学</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>现在很流行一万小时定律，就是你要在某个领域成为专家那只需要在这个领域经过一万小时的练习就可以了。那真的是这样的吗？真的需要一万小时吗？一万小时就会成为专家吗？其实这都不一定，就像一个出租车司机，已经积累了1万小时的里程但是他还是成为不了赛车手一样。罗辑思维的是这期节目告诉你到底应该怎么做才能练成一个高手。建议在原文链接里看完这期节目后再回来看这篇文章会收获更大。</p>
-</blockquote>
-<h2 id="刻意练习"><a href="#刻意练习" class="headerlink" title="刻意练习"></a>刻意练习</h2><h3 id="一、练习——针对性重复练习。"><a href="#一、练习——针对性重复练习。" class="headerlink" title="一、练习——针对性重复练习。"></a>一、练习——针对性重复练习。</h3><ol>
-<li>套路，拿来主义。 前人的知识封装成一个知识罐头，抽象为简洁的东西，拿来就用。<br>最重要的套路：<br> 行业经验，书本上找不到，而是行业前辈总结出的经验。找老司机学套路。<br> 学科的概念，一个学科是靠几个大的概念堆出来的，要围绕着这些大的概念把他们弄清楚。经济学20世纪最重要的概念就是发现了交易成本，物理学是发现了熵。只要你了解这些概念清晰的内涵和外延，你就能把这个学科整坨的知识拿到手。</li>
-<li>拆解练习。不能以赛代练，要要把大的知识体系拆碎成为一个个小模块，一个个小知识罐头，分别练习。</li>
-<li>最重要的事是——重复。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/26/怎样做到100分/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/26/两种自由/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/a.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J-Box:80">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/26/两种自由/" itemprop="url">两种自由</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T07:33:44+08:00">
-                2017-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/成为你自己/" itemprop="url" rel="index">
-                    <span itemprop="name">成为你自己</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cjek0dbrp0009x0nlu117jbsq"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="contentUrl"/>
+              <a href="/2017/12/18/插入排序，二分查找，二维数组打印杨辉三角/" rel="next" title="插入排序，二分查找，二维数组打印杨辉三角">
+                <i class="fa fa-chevron-left"></i> 插入排序，二分查找，二维数组打印杨辉三角
               </a>
             
-          
+          </div>
 
-          
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
           </div>
         </div>
       
 
       
-        
-          <h2 id="精神自由"><a href="#精神自由" class="headerlink" title="精神自由"></a>精神自由</h2><p><strong>liberal arts</strong>一词来源于西方属于西学，有的翻译叫“通识教育”、“素质教育”、“人文教育”、“博雅教育”等，但更确切的讲应该译作<br><strong>“自由技艺”</strong>。在古代她是统治者的学问，而在现代是一种培养具有批判性思维，独立人格的学问，也可以叫做拒绝被统治的学问。</p>
-<p>这些学问和那些可以直接从事生产赚钱的技术不同，她们是一种软实力，这些软实力中最重要的有三个：批判性思维、交流、解决问题的能力。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/26/两种自由/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -908,10 +466,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -919,6 +478,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1148,6 +711,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
