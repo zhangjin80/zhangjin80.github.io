@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="排序,算法,Java," />
+  <meta name="keywords" content="Hadoop,MapReduce算法,算法," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="插入排序。123456789101112131415161718192021222324//方式一：int arr = &amp;#123;3,11,6,22,1,44&amp;#125;;for(int i=1; i&amp;lt;arr.length; i++)&amp;#123;    int temp = arr[i];    int j = i;    while(j&amp;gt;0&amp;amp;&amp;amp;arr[j-1]&amp;g">
-<meta name="keywords" content="排序,算法,Java">
+<meta name="description" content="要点：  只能做大表连接小表的操作， 把小表加载当前执行mapTask任务的节点上 只适合实现大表对小表内连接和左外连接，不能实现有外连接。 只能在集群中进行测试。如报java.lang.InterruptedException和java.lang.CaughtException可忽略 分布式组件分布小文件到节点本地的路径： data/hadoopdata/nm-local-dir/filecac">
+<meta name="keywords" content="Hadoop,MapReduce算法,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="插入排序，二分查找，二维数组打印杨辉三角">
-<meta property="og:url" content="http://yoursite.com/2017/12/18/插入排序，二分查找，二维数组打印杨辉三角/index.html">
+<meta property="og:title" content="小表连接大表-map join">
+<meta property="og:url" content="http://yoursite.com/2017/11/18/小表连接大表-map-join/index.html">
 <meta property="og:site_name" content="J-Box:80">
-<meta property="og:description" content="插入排序。123456789101112131415161718192021222324//方式一：int arr = &amp;#123;3,11,6,22,1,44&amp;#125;;for(int i=1; i&amp;lt;arr.length; i++)&amp;#123;    int temp = arr[i];    int j = i;    while(j&amp;gt;0&amp;amp;&amp;amp;arr[j-1]&amp;g">
+<meta property="og:description" content="要点：  只能做大表连接小表的操作， 把小表加载当前执行mapTask任务的节点上 只适合实现大表对小表内连接和左外连接，不能实现有外连接。 只能在集群中进行测试。如报java.lang.InterruptedException和java.lang.CaughtException可忽略 分布式组件分布小文件到节点本地的路径： data/hadoopdata/nm-local-dir/filecac">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-09T13:40:27.037Z">
+<meta property="og:updated_time" content="2018-03-18T14:43:12.924Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="插入排序，二分查找，二维数组打印杨辉三角">
-<meta name="twitter:description" content="插入排序。123456789101112131415161718192021222324//方式一：int arr = &amp;#123;3,11,6,22,1,44&amp;#125;;for(int i=1; i&amp;lt;arr.length; i++)&amp;#123;    int temp = arr[i];    int j = i;    while(j&amp;gt;0&amp;amp;&amp;amp;arr[j-1]&amp;g">
+<meta name="twitter:title" content="小表连接大表-map join">
+<meta name="twitter:description" content="要点：  只能做大表连接小表的操作， 把小表加载当前执行mapTask任务的节点上 只适合实现大表对小表内连接和左外连接，不能实现有外连接。 只能在集群中进行测试。如报java.lang.InterruptedException和java.lang.CaughtException可忽略 分布式组件分布小文件到节点本地的路径： data/hadoopdata/nm-local-dir/filecac">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/18/插入排序，二分查找，二维数组打印杨辉三角/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/18/小表连接大表-map-join/"/>
 
 
 
 
 
-  <title>插入排序，二分查找，二维数组打印杨辉三角 | J-Box:80</title>
+  <title>小表连接大表-map join | J-Box:80</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/18/插入排序，二分查找，二维数组打印杨辉三角/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/18/小表连接大表-map-join/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">插入排序，二分查找，二维数组打印杨辉三角</h1>
+          <h1 class="post-title" itemprop="name headline">小表连接大表-map join</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T20:33:44+08:00">
-                2017-12-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-18T20:39:44+08:00">
+                2017-11-18
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
                   </a>
                 </span>
 
@@ -386,19 +386,17 @@
       
 
       
-        <ol>
-<li>插入排序。<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式一：</span></span><br><span class="line"><span class="type">int</span> arr = &#123;<span class="number">3</span>,<span class="number">11</span>,<span class="number">6</span>,<span class="number">22</span>,<span class="number">1</span>,<span class="number">44</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;arr.<span class="built_in">length</span>; i++)&#123;</span><br><span class="line">    <span class="type">int</span> temp = arr[i];</span><br><span class="line">    <span class="type">int</span> j = i;</span><br><span class="line">    <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;&amp;arr[j<span class="number">-1</span>]&gt;temp)&#123;<span class="comment">//前面的数大于i处的值就往后覆盖，一直到temp的值比这个值小的时候停止</span></span><br><span class="line">        arr[j] = arr[j<span class="number">-1</span>];</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[j] = temp;<span class="comment">//把temp的值赋给前面元素比它大的位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式二</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i&lt;arr.<span class="built_in">length</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[j]&gt;arr[i])&#123;</span><br><span class="line">            <span class="type">int</span> temp = arr[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=i;k&gt;j;k--)&#123;</span><br><span class="line">                arr[k] = arr[k<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<a id="more"></a>
+        <p>要点：</p>
 <ol>
-<li><p>有序数组的二分查找。</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BinarySearch</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">12</span>, <span class="number">19</span>, <span class="number">22</span>, <span class="number">25</span>, <span class="number">29</span>, <span class="number">33</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = arr.length<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle;</span><br><span class="line">        <span class="keyword">int</span> <span class="keyword">value</span> = <span class="number">25</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (start&lt;end) &#123;</span><br><span class="line">            middle = (start + end) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (arr[middle] == <span class="keyword">value</span>) &#123;</span><br><span class="line">                System.<span class="keyword">out</span>.println(middle);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (arr[middle] &gt; <span class="keyword">value</span>) &#123;</span><br><span class="line">                end = middle<span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (arr[middle] &lt; <span class="keyword">value</span>) &#123;</span><br><span class="line">                start = middle+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>只能做大表连接小表的操作，</li>
+<li>把小表加载当前执行mapTask任务的节点上</li>
+<li>只适合实现大表对小表内连接和左外连接，不能实现有外连接。</li>
+<li>只能在集群中进行测试。如报java.lang.InterruptedException和<br>java.lang.CaughtException可忽略</li>
+<li>分布式组件分布小文件到节点本地的路径： data/hadoopdata/nm-local-dir/filecache/10/<a id="more"></a>
+<h4 id="添加小文件"><a href="#添加小文件" class="headerlink" title="添加小文件"></a>添加小文件</h4><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置要分布式的缓存到mapTask节点文件路径</span></span><br><span class="line"><span class="comment">//利用DistributedCache分布式缓存组件，把文件分发进行map操作的节点本地</span></span><br><span class="line"><span class="keyword">job</span>.addCacheFile(<span class="keyword">new</span> URI(args[<span class="number">2</span>]))<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>利用不规则的二维数组存储杨辉三角</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int[<span class="string"></span>][<span class="symbol"></span>] arr = new int[<span class="string">8</span>][<span class="symbol"></span>];</span><br><span class="line"><span class="code">		for(int i=0; i&lt;arr.length; i++)&#123;</span></span><br><span class="line"><span class="code">		    arr[i] = new int[i+1];</span></span><br><span class="line"><span class="code">		&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="code">		for(int i=0; i&lt;arr.length; i++)&#123;</span></span><br><span class="line"><span class="code">		    for(int j=0; j&lt;arr[i].length; j++)&#123;</span></span><br><span class="line"><span class="code">		        if(j==0||j==i)&#123;</span></span><br><span class="line"><span class="code">		            arr[i][j] = 1;</span></span><br><span class="line"><span class="code">		            System.out.print(arr[i][j]);</span></span><br><span class="line"><span class="code">		        &#125;else&#123;</span></span><br><span class="line"><span class="code">		            arr[i][j] = arr[i-1][j-1]+arr[i-1][j];</span></span><br><span class="line"><span class="code">		            System.out.print(arr[i][j]);</span></span><br><span class="line"><span class="code">		        &#125;</span></span><br><span class="line"><span class="code">		    &#125;</span></span><br><span class="line"><span class="code">		    System.out.println();</span></span><br><span class="line"><span class="code">		&#125;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-
+<h4 id="mapper实现"><a href="#mapper实现" class="headerlink" title="mapper实现"></a>mapper实现</h4><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">users.dat   数据格式为：  2::M::56::16::70072</span></span><br><span class="line"><span class="comment">对应字段中文解释：用户id，性别，年龄，职业，邮政编码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> class MR_Mapper extends Mapper&lt;LongWritable, Text, Text, Text&gt;&#123;</span><br><span class="line">	<span class="comment">//用于存储小表数据</span></span><br><span class="line">	<span class="keyword">HashMap</span>&lt;<span class="keyword">String</span> , <span class="keyword">String</span>&gt; users = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setup</span>(Mapper&lt;LongWritable, Text, Text, Text&gt;.Context context)</span><br><span class="line">			<span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">		<span class="comment">//获得内存本地缓存的小文件的路径</span></span><br><span class="line">		Path[] localCacheFiles = context.getLocalCacheFiles();</span><br><span class="line">		<span class="keyword">String</span> usersFilePath = localCacheFiles[<span class="number">0</span>].toUri().toString();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//通过字符输入流读取进users中</span></span><br><span class="line">		<span class="keyword">BufferedReader</span> br = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(<span class="keyword">new</span> FileReader(<span class="keyword">new</span> File(usersFilePath)));</span><br><span class="line">		<span class="keyword">String</span> <span class="built_in">line</span>=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">while</span>((<span class="built_in">line</span> = br.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">String</span>[] <span class="built_in">split</span> = <span class="built_in">line</span>.<span class="built_in">split</span>(<span class="string">"::"</span>);</span><br><span class="line">			<span class="keyword">String</span> id = <span class="built_in">split</span>[<span class="number">0</span>];</span><br><span class="line">			<span class="keyword">String</span> mapValue = <span class="built_in">split</span>[<span class="number">1</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">2</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">3</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">4</span>];</span><br><span class="line">			<span class="comment">//存储到内存</span></span><br><span class="line">			users.put(id, mapValue);</span><br><span class="line">		&#125;</span><br><span class="line">		br.close();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//ratings.dat		数据格式为：  1::1193::5::978300760</span></span><br><span class="line">	<span class="comment">//对应字段中文解释：用户ID，电影ID，评分，评分时间戳</span></span><br><span class="line">	Text outValue = <span class="keyword">new</span> Text();</span><br><span class="line">	Text outKey = <span class="keyword">new</span> Text();</span><br><span class="line">	@Override</span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="built_in">map</span>(LongWritable <span class="built_in">key</span>, Text value, Context context) <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">		<span class="keyword">String</span>[] <span class="built_in">split</span> = value.toString().<span class="built_in">split</span>(<span class="string">"::"</span>);</span><br><span class="line">		<span class="keyword">String</span> userId = <span class="built_in">split</span>[<span class="number">0</span>];</span><br><span class="line">		outKey.<span class="built_in">set</span>(userId);</span><br><span class="line">		<span class="keyword">String</span> strValue = <span class="built_in">split</span>[<span class="number">1</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">2</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">3</span>];</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//如果HashMap中存在当前userId就进行数据拼接</span></span><br><span class="line">		<span class="keyword">if</span>(users.containsKey(userId))&#123;</span><br><span class="line">			<span class="keyword">String</span> mapValue = users.<span class="built_in">get</span>(userId);</span><br><span class="line">			outValue.<span class="built_in">set</span>(strValue+<span class="string">"\t"</span>+mapValue);</span><br><span class="line">			context.write(outKey, outValue);</span><br><span class="line">			</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;<span class="comment">//做左外连接（不能做右外连接）</span></span><br><span class="line">			outValue.<span class="built_in">set</span>(strValue + <span class="string">"\t"</span>+<span class="string">""</span>+<span class="string">"0"</span>+<span class="string">"\t"</span>+<span class="string">"0"</span>+<span class="string">"\t"</span>+<span class="string">"00000"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -415,11 +413,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/排序/" rel="tag"># 排序</a>
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+            <a href="/tags/MapReduce算法/" rel="tag"># MapReduce算法</a>
           
             <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -432,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/26/怎样做到100分/" rel="next" title="怎样做到100分">
-                <i class="fa fa-chevron-left"></i> 怎样做到100分
+              <a href="/2017/11/18/二次排序算法（可求不同类别下的Top-N）/" rel="next" title="二次排序算法（可求不同类别下的Top N）">
+                <i class="fa fa-chevron-left"></i> 二次排序算法（可求不同类别下的Top N）
               </a>
             
           </div>
@@ -496,8 +494,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -516,7 +523,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -527,7 +534,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -538,7 +545,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -571,6 +578,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加小文件"><span class="nav-number">1.</span> <span class="nav-text">添加小文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mapper实现"><span class="nav-number">2.</span> <span class="nav-text">mapper实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
