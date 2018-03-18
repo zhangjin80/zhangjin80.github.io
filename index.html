@@ -387,7 +387,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://www.zhinengl.com/wp-content/uploads/2017/02/algorithms.jpg" rel="gallery_cjewwxmam0011rgnluy8kt9pr"
+                 href="https://www.zhinengl.com/wp-content/uploads/2017/02/algorithms.jpg" rel="gallery_cjewx5d95000ax4nlyywxxthi"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://www.zhinengl.com/wp-content/uploads/2017/02/algorithms.jpg" itemprop="contentUrl"/>
               </a>
@@ -408,6 +408,312 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/03/09/归并排序算法实现详细注释/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/28/二次排序算法（可求不同类别下的Top-N）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J-Box:80">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/二次排序算法（可求不同类别下的Top-N）/" itemprop="url">二次排序算法（可求不同类别下的Top N）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-28T20:39:44+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一条测试数据示例：</span><br><span class="line">math,xuzheng,<span class="number">54</span>,<span class="number">52</span>,<span class="number">86</span>,<span class="number">91</span>,<span class="number">42</span>,<span class="number">85</span>,<span class="number">75</span></span><br><span class="line">课程名，学生姓名，分数</span><br><span class="line">（完整的数据放在最后）</span><br></pre></td></tr></table></figure>
+<p>需求：求出每门课程参考学生平均成绩最高的学生的信息：课程，姓名和平均分。</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><ol>
+<li><p>创建课程pojo类，实现WritableComparable接口，实现compareTo方法，先对课程名进行比较，相同再对分数进行比较。</p>
+</li>
+<li><p>创建分组类实现WritableComparator接口，实现compare方法对课程名进行比较。</p>
+</li>
+<li><p>在map()中对每行数据进切片，求出平均分，封装进课程对象，然后把改对象作为outKey输出给reduce()。</p>
+</li>
+<li><p>reduce()每一组的values进行遍历，输出这一组排序好的key。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/28/二次排序算法（可求不同类别下的Top-N）/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/18/两张表的连接-reduce-join/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J-Box:80">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/18/两张表的连接-reduce-join/" itemprop="url">两张表的连接-reduce join</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-18T20:39:44+08:00">
+                2017-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>要点：</p>
+<ol>
+<li>两个表中有相同字段，把相同字段的条目，发送到reduce进行拼接</li>
+<li>用文件名来区分map中取到的条目是来自哪张表，以便于切分</li>
+<li>一个文件块一个split只需要在setup()方法中获取一次文件名就可以</li>
+<li>在reduce中进行两张表的拼接，会出现数据倾斜，不适合做大文件操作。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/18/两张表的连接-reduce-join/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -564,310 +870,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/18/二次排序算法（可求不同类别下的Top-N）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/a.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J-Box:80">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/18/二次排序算法（可求不同类别下的Top-N）/" itemprop="url">二次排序算法（可求不同类别下的Top N）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-18T20:39:44+08:00">
-                2017-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一条测试数据示例：</span><br><span class="line">math,xuzheng,<span class="number">54</span>,<span class="number">52</span>,<span class="number">86</span>,<span class="number">91</span>,<span class="number">42</span>,<span class="number">85</span>,<span class="number">75</span></span><br><span class="line">课程名，学生姓名，分数</span><br><span class="line">（完整的数据放在最后）</span><br></pre></td></tr></table></figure>
-<p>需求：求出每门课程参考学生平均成绩最高的学生的信息：课程，姓名和平均分。</p>
-<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><ol>
-<li><p>创建课程pojo类，实现WritableComparable接口，实现compareTo方法，先对课程名进行比较，相同再对分数进行比较。</p>
-</li>
-<li><p>创建分组类实现WritableComparator接口，实现compare方法对课程名进行比较。</p>
-</li>
-<li><p>在map()中对每行数据进切片，求出平均分，封装进课程对象，然后把改对象作为outKey输出给reduce()。</p>
-</li>
-<li><p>reduce()每一组的values进行遍历，输出这一组排序好的key。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/18/二次排序算法（可求不同类别下的Top-N）/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/18/两张表的连接-reduce-join/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/a.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J-Box:80">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/18/两张表的连接-reduce-join/" itemprop="url">两张表的连接-reduce join</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-18T20:39:44+08:00">
-                2017-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>要点：</p>
-<ol>
-<li>两个表中有相同字段，把相同字段的条目，发送到reduce进行拼接</li>
-<li>用文件名来区分map中取到的条目是来自哪张表，以便于切分</li>
-<li>一个文件块一个split只需要在setup()方法中获取一次文件名就可以</li>
-<li>在reduce中进行两张表的拼接，会出现数据倾斜，不适合做大文件操作。<h3 id="mapper"><a href="#mapper" class="headerlink" title="mapper"></a>mapper</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">users.dat    数据格式为：  2::M::56::16::70072</span></span><br><span class="line"><span class="comment">对应字段中文解释：用户id，性别，年龄，职业，邮政编码</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">ratings.dat		数据格式为：  1::1193::5::978300760</span></span><br><span class="line"><span class="comment">对应字段中文解释：用户ID，电影ID，评分，评分时间戳</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> class MR_Mapper extends Mapper&lt;LongWritable, Text, Text, Text&gt;&#123;</span><br><span class="line">    <span class="keyword">String</span> fileName;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在map初始化方法中获取文件名用于区分表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setup</span>(Context context) <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">    	InputSplit inputSplit = context.getInputSplit();</span><br><span class="line">    	FileSplit fileSplit = (FileSplit)inputSplit;</span><br><span class="line">    	fileName = fileSplit.getPath().getName();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="built_in">map</span>(LongWritable <span class="built_in">key</span>, Text value, Context context) <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">    	<span class="keyword">String</span>[] <span class="built_in">split</span> = value.toString().<span class="built_in">split</span>(<span class="string">"::"</span>);</span><br><span class="line">    	<span class="keyword">String</span> <span class="built_in">str</span>=<span class="string">""</span>;</span><br><span class="line">    	<span class="keyword">String</span> id = <span class="string">""</span>;</span><br><span class="line">    	<span class="keyword">if</span>(fileName.equals(<span class="string">"users.dat"</span>))&#123;<span class="comment">//文件名为users.dat为第一张表</span></span><br><span class="line">    		id = <span class="built_in">split</span>[<span class="number">0</span>];</span><br><span class="line">    		<span class="built_in">str</span> = <span class="number">1</span>+<span class="string">"\t"</span> + <span class="built_in">split</span>[<span class="number">1</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">2</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">3</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">4</span>];</span><br><span class="line">    	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    		id = <span class="built_in">split</span>[<span class="number">0</span>];</span><br><span class="line">    		<span class="built_in">str</span> = <span class="number">0</span>+<span class="string">"\t"</span> + <span class="built_in">split</span>[<span class="number">1</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">2</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">3</span>];</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="comment">//以两张表中相同的字段作为outkey输出给reduce</span></span><br><span class="line">    	outKey.<span class="built_in">set</span>(id);</span><br><span class="line">    	outValue.<span class="built_in">set</span>(<span class="built_in">str</span>);</span><br><span class="line">    	context.write(outKey, outValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="reduce阶段："><a href="#reduce阶段：" class="headerlink" title="reduce阶段："></a>reduce阶段：</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> class MR_Reducer extends Reducer&lt;Text, Text, Text, Text&gt;&#123;</span><br><span class="line">	<span class="comment">//存储输出value</span></span><br><span class="line">	Text outValue = <span class="keyword">new</span> Text();</span><br><span class="line">	<span class="comment">//用于存储user表中的字段。</span></span><br><span class="line">	ArrayList&lt;<span class="keyword">String</span>&gt; userList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	<span class="comment">//用于存储user表中的字段。</span></span><br><span class="line">	ArrayList&lt;<span class="keyword">String</span>&gt; rateList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	@Override</span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> reduce(Text <span class="built_in">key</span>, Iterable&lt;Text&gt; values, Context context) <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">		<span class="comment">//分别取出两张表中的条目</span></span><br><span class="line">		<span class="keyword">for</span>(Text v:values)&#123;</span><br><span class="line">			<span class="keyword">String</span>[] <span class="built_in">split</span> = v.toString().<span class="built_in">split</span>(<span class="string">"\t"</span>);</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">split</span>[<span class="number">0</span>].equals(<span class="string">"1"</span>))&#123;<span class="comment">//标识1，为users.dat表</span></span><br><span class="line">				<span class="keyword">String</span> temp = <span class="built_in">split</span>[<span class="number">1</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">2</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">3</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">4</span>];</span><br><span class="line">				userList.<span class="built_in">add</span>(temp);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">String</span> temp = <span class="built_in">split</span>[<span class="number">1</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">2</span>]+<span class="string">"\t"</span>+<span class="built_in">split</span>[<span class="number">3</span>];</span><br><span class="line">				rateList.<span class="built_in">add</span>(temp);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//对两张表进行连接（内连接操作）</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">String</span> user : userList)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">String</span> rate:rateList)&#123;</span><br><span class="line">				outValue.<span class="built_in">set</span>(user + <span class="string">"\t--"</span>+rate);</span><br><span class="line">				context.write(<span class="built_in">key</span>, outValue);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//左外链接操作（右做相反操作就可以了）</span></span><br><span class="line">		<span class="keyword">if</span>(userList.<span class="built_in">size</span>()&gt;<span class="number">0</span>&amp;&amp;rateList.<span class="built_in">size</span>()==<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">String</span> user : userList)&#123;</span><br><span class="line">				outValue.<span class="built_in">set</span>(user);</span><br><span class="line">				context.write(<span class="built_in">key</span>, outValue);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		userList.<span class="built_in">clear</span>();</span><br><span class="line">		rateList.<span class="built_in">clear</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
         
       
     </div>
@@ -1157,7 +1159,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cjewwxmar0013rgnl65c5kgbc"
+                 href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cjewx5d850001x4nlc7llxqq9"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="contentUrl"/>
               </a>
