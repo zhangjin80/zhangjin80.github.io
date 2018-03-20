@@ -387,7 +387,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://www.zhinengl.com/wp-content/uploads/2017/02/algorithms.jpg" rel="gallery_cjewxd986000aw0nlp1vju5fy"
+                 href="https://www.zhinengl.com/wp-content/uploads/2017/02/algorithms.jpg" rel="gallery_cjez0bxtc000d58nlai63lrqc"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://www.zhinengl.com/wp-content/uploads/2017/02/algorithms.jpg" itemprop="contentUrl"/>
               </a>
@@ -563,6 +563,160 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/28/二次排序算法（可求不同类别下的Top-N）/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/18/MapReduce自定义输入输出组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J-Box:80">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/18/MapReduce自定义输入输出组件/" itemprop="url">MapReduce自定义输入输出组件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T20:39:44+08:00">
+                2017-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="多个小文件合并，"><a href="#多个小文件合并，" class="headerlink" title="多个小文件合并，"></a>多个小文件合并，</h3><p>一个key-value，value是小文件的所有内容。</p>
+<p>套路：模仿org.apache.hadoop.mapreduce.lib.input.LineRecordReader<br>和org.apache.hadoop.mapreduce.lib.input.TextInputFormat</p>
+<ol>
+<li><p>把输入控件设置成自定义的控件类</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">job</span>.setInputFormatClass(MyAllFileInputFormat.<span class="keyword">class</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现自定义控件继承FileInputFormat&lt;Text, LongWritable&gt;这里的泛型就是读取文件时的key和value的类型。</p>
+</li>
+<li><p>实现createRecordReader方法，该方法返回一个RecordReader对象，该对象就是真正读取文件内容的对象，所以，在该方法中实例化一个自定义的RecordReader对象，并把split和context参数传给他。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/18/MapReduce自定义输入输出组件/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1159,7 +1313,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cjewxd97m0003w0nl9kevogch"
+                 href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" rel="gallery_cjez0bxss000758nlyf77pyzz"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg" itemprop="contentUrl"/>
               </a>
@@ -1417,7 +1571,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1439,7 +1593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
