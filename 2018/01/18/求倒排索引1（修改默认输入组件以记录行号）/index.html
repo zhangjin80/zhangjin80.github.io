@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hadoop,MapReduce," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概念：    倒排索引（Inverted index），也常被称为反向索引、置入档案或反向档案，是一种索引方法，    被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。    它是文档检索系统中最常用的数据结构 求出每个关键词在哪个文档中的第几行出现了几次     输入数据格式： 有两个文件data1.txt和data2.txt，文件中的内容就是普通的文本。每个单词就是一个">
+<meta name="keywords" content="Hadoop,MapReduce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="求倒排索引1（修改默认输入组件以记录行号）">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/求倒排索引1（修改默认输入组件以记录行号）/index.html">
+<meta property="og:site_name" content="J-Box:80">
+<meta property="og:description" content="概念：    倒排索引（Inverted index），也常被称为反向索引、置入档案或反向档案，是一种索引方法，    被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。    它是文档检索系统中最常用的数据结构 求出每个关键词在哪个文档中的第几行出现了几次     输入数据格式： 有两个文件data1.txt和data2.txt，文件中的内容就是普通的文本。每个单词就是一个">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-25T10:57:17.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="求倒排索引1（修改默认输入组件以记录行号）">
+<meta name="twitter:description" content="概念：    倒排索引（Inverted index），也常被称为反向索引、置入档案或反向档案，是一种索引方法，    被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。    它是文档检索系统中最常用的数据结构 求出每个关键词在哪个文档中的第几行出现了几次     输入数据格式： 有两个文件data1.txt和data2.txt，文件中的内容就是普通的文本。每个单词就是一个">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/求倒排索引1（修改默认输入组件以记录行号）/"/>
+
+
+
+
+
+  <title>求倒排索引1（修改默认输入组件以记录行号） | J-Box:80</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fa98bb0283a99d219be0cb78b384bb06";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">J-Box:80</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I took the one less traveled by, and that has made all the difference.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/求倒排索引1（修改默认输入组件以记录行号）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J-Box:80">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">求倒排索引1（修改默认输入组件以记录行号）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-18T18:50:40+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>概念：<br>    倒排索引（Inverted index），也常被称为反向索引、置入档案或反向档案，是一种索引方法，<br>    被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。<br>    它是文档检索系统中最常用的数据结构</p>
+<p>求出每个关键词在哪个文档中的第几行出现了几次    </p>
+<p>输入数据格式：</p>
+<p>有两个文件data1.txt和data2.txt，文件中的内容就是普通的文本。每个单词就是一个关键词</p>
+<p>data1.txt的内容：</p>
+<pre><code>zhangsan love zhouba
+lisi love zhengshi lisi love wujiu
+wangwu love zhaoliu
+lisi zhouba zhangsan sunqi
+</code></pre><p>data2.txt的内容：</p>
+<pre><code>hello zhangsan
+hello zhouba
+hello lisi
+</code></pre><p>输出数据格式：</p>
+<pre><code>huangixaoming data1.txt,2,2;data1.txt,4,1;data2.txt,3,1
+</code></pre><a id="more"></a>
+<p>意义：</p>
+<pre><code>关键词 lisi 在第一份文档 data1.txt 中的第 2 行出现了 2 次
+关键词 lisi 在第一份文档 data1.txt 中的第 4 行出现了 1 次
+关键词 lisi 在第二份文档 data2.txt 中的第 3 行出现了 1 次
+</code></pre><p>求得的最终结果：</p>
+<pre><code>zhengshi    data1.txt,2,1
+hello    data2.txt,3,1;data2.txt,2,1;data2.txt,1,1
+zhangsan    data2.txt,1,1;data1.txt,4,1;data1.txt,1,1
+lisi    data1.txt,4,1;data1.txt,2,2;data2.txt,3,1
+wangwu    data1.txt,3,1
+zhaoliu    data1.txt,3,1
+love    data1.txt,3,1;data1.txt,1,1;data1.txt,2,2
+sunqi    data1.txt,4,1
+zhouba    data1.txt,1,1;data1.txt,4,1;data2.txt,2,1
+wujiu    data1.txt,2,1
+</code></pre><hr>
+<h3 id="实现思想"><a href="#实现思想" class="headerlink" title="实现思想"></a>实现思想</h3><ol>
+<li>在setup中获取文件名</li>
+<li><p>修改默认组件以记录行号。</p>
+<p> 在大文件读取时，只能采用改写默认输入组件的方式进行。因为一个大文件会被切分成多个split并行执行，所以在mapper中声明一个属性记录行号的做法，会导致每一个块的每一行都从头算起，不可行</p>
+</li>
+<li>在map中以单词名称作为key；文件名，行号，出现次数作为value输出。在reduce中进行合并。</li>
+</ol>
+<h3 id="MapReduce主体逻辑"><a href="#MapReduce主体逻辑" class="headerlink" title="MapReduce主体逻辑"></a>MapReduce主体逻辑</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> exam_answer.three;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileSystem;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.LongWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.InputSplit;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileSplit;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class InvertedIndexMR_1 &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">		Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">		Job job = Job.getInstance(conf);</span><br><span class="line"></span><br><span class="line">		job.setJarByClass(InvertedIndexMR_1.class);</span><br><span class="line"></span><br><span class="line">		job.setMapperClass(InvertedIndexMR_1_Mapper.class);</span><br><span class="line">		job.setReducerClass(InvertedIndexMR_1_Reducer.class);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//设置自定义的默认组件</span></span><br><span class="line">		job.setInputFormatClass(MyTextInputFormat.class);</span><br><span class="line"></span><br><span class="line">		job.setMapOutputKeyClass(Text.class);</span><br><span class="line">		job.setMapOutputValueClass(Text.class);</span><br><span class="line">		job.setOutputKeyClass(Text.class);</span><br><span class="line">		job.setOutputValueClass(Text.class);</span><br><span class="line"></span><br><span class="line">		FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(<span class="string">"E:\\bigdatatest\\input"</span>));</span><br><span class="line">		Path outputPath = <span class="keyword">new</span> Path(<span class="string">"E:\\bigdatatest\\output"</span>);</span><br><span class="line">		FileSystem fs = FileSystem.<span class="built_in">get</span>(conf);</span><br><span class="line">		<span class="keyword">if</span> (fs.exists(outputPath)) &#123;</span><br><span class="line">			fs.delete(outputPath, <span class="keyword">true</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		FileOutputFormat.setOutputPath(job, outputPath);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">boolean</span> isDone = job.waitForCompletion(<span class="keyword">true</span>);</span><br><span class="line">		System.<span class="built_in">exit</span>(isDone ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> class InvertedIndexMR_1_Mapper extends Mapper&lt;LongWritable, Text, Text, Text&gt; &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">String</span> fileName = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">private</span> Text outkey = <span class="keyword">new</span> Text();</span><br><span class="line">		<span class="keyword">private</span> Text outvalue = <span class="keyword">new</span> Text();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//用于每一行中的单词计数</span></span><br><span class="line">		<span class="keyword">private</span> Map&lt;<span class="keyword">String</span>, Integer&gt; wordsCountMap = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, Integer&gt;();</span><br><span class="line">		</span><br><span class="line">		@Override</span><br><span class="line">		<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setup</span>(Context context) <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">			<span class="comment">/**</span></span><br><span class="line"><span class="comment">			 * 获取文件名</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			InputSplit inputSplit = context.getInputSplit();</span><br><span class="line">			FileSplit fileSplit = (FileSplit)inputSplit;</span><br><span class="line">			fileName = fileSplit.getPath().getName();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * map方法输出的key-value分别是：</span></span><br><span class="line"><span class="comment">		 * key ：行号</span></span><br><span class="line"><span class="comment">		 * value ：word1 word2 word3 ...</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		@Override</span><br><span class="line">		<span class="keyword">protected</span> <span class="keyword">void</span> <span class="built_in">map</span>(LongWritable <span class="built_in">key</span>, Text value, Context context) <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">			<span class="keyword">String</span>[] <span class="built_in">split</span> = value.toString().<span class="built_in">split</span>(<span class="string">" "</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//把每一个词存入wordsCountMap并计数</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">String</span> word : <span class="built_in">split</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(wordsCountMap.containsKey(word))&#123;</span><br><span class="line">					wordsCountMap.put(word, wordsCountMap.<span class="built_in">get</span>(word) + <span class="number">1</span>);</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					wordsCountMap.put(word, <span class="number">1</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//遍历wordsCountMap并输出key-value</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">String</span> word : wordsCountMap.keySet())&#123;</span><br><span class="line">				outkey.<span class="built_in">set</span>(word);</span><br><span class="line">				outvalue.<span class="built_in">set</span>(fileName + <span class="string">","</span> + <span class="built_in">key</span>.<span class="built_in">get</span>() + <span class="string">","</span> + wordsCountMap.<span class="built_in">get</span>(word));</span><br><span class="line">				<span class="comment">//输出格式：word	文件名，行号，个数	</span></span><br><span class="line">				context.write(outkey, outvalue);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//读取一行后清空HashMap</span></span><br><span class="line">			wordsCountMap.<span class="built_in">clear</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> class InvertedIndexMR_1_Reducer extends Reducer&lt;Text, Text, Text, Text&gt; &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> Text outvalue = <span class="keyword">new</span> Text();</span><br><span class="line">		</span><br><span class="line">		@Override</span><br><span class="line">		<span class="keyword">protected</span> <span class="keyword">void</span> reduce(Text <span class="built_in">key</span>, Iterable&lt;Text&gt; values, Context context)</span><br><span class="line">				<span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">			StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">			<span class="comment">//合并</span></span><br><span class="line">			<span class="keyword">for</span>(Text val : values)&#123;</span><br><span class="line">				sb.<span class="built_in">append</span>(val.toString()).<span class="built_in">append</span>(<span class="string">";"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//去除最后一个分号</span></span><br><span class="line">			<span class="keyword">String</span> newStr = sb.toString().substring(<span class="number">0</span>, sb.toString().length() - <span class="number">1</span>);</span><br><span class="line">			outvalue.<span class="built_in">set</span>(newStr);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//输出格式：hello	data2.txt,3,1;data2.txt,2,1;data2.txt,1,1</span></span><br><span class="line">			context.write(<span class="built_in">key</span>, outvalue);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义输入组件"><a href="#自定义输入组件" class="headerlink" title="自定义输入组件"></a>自定义输入组件</h3><p>自定义输入组件可以直接复制TextInputForMat，和LineRecordReader两个类再其上进行改写。</p>
+<ol>
+<li><p>MyTextInputFormat.class</p>
+<p> 只需要把createRecordReader()方法中的返回值改成自定义的MyLineRecordReader。读取组件的主体逻辑是在RecordReader中实现的。</p>
+</li>
+</ol>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line"><span class="keyword">public</span> RecordReader&lt;LongWritable, Text&gt; createRecordReader(InputSplit <span class="built_in">split</span>, TaskAttemptContext context) &#123;</span><br><span class="line">	<span class="keyword">String</span> delimiter = context.getConfiguration().<span class="built_in">get</span>(<span class="string">"textinputformat.record.delimiter"</span>);</span><br><span class="line">	<span class="built_in">byte</span>[] recordDelimiterBytes = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">null</span> != delimiter)</span><br><span class="line">		recordDelimiterBytes = delimiter.getBytes(Charsets.UTF_8);</span><br><span class="line">	<span class="comment">//修改为自定义的类</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> MyLineRecordReader(recordDelimiterBytes);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>MyLineRecordReader.class<br>因为只把map()的输入的key值从行偏移量改成行号，所以主体逻辑不需要变。nextKeyValue()方法是实现读取文件中的每一行数据的实现，在其中把原来设置key值的方法key.set(pos)改为key.set(lineCount)，当然先要声明一个属性private long lineCount = 1; 最后还要在while循环中对lineCount++；<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> long lineCount = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> boolean nextKeyValue() throws IOException &#123;</span><br><span class="line">		<span class="keyword">if</span> (key == <span class="literal">null</span>) &#123;</span><br><span class="line">			key = <span class="keyword">new</span> <span class="type">LongWritable</span>();</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">//		key.set(pos);</span></span><br><span class="line">		<span class="comment">//把map输入的key设为行号</span></span><br><span class="line">		key.<span class="keyword">set</span>(lineCount);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (value == <span class="literal">null</span>) &#123;</span><br><span class="line">			value = <span class="keyword">new</span> <span class="type">Text</span>();</span><br><span class="line">		&#125;</span><br><span class="line">		int <span class="keyword">new</span><span class="type">Size</span> = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// We always read one extra line, which lies outside the upper</span></span><br><span class="line">		<span class="comment">// split limit i.e. (end - 1)</span></span><br><span class="line">		<span class="keyword">while</span> (getFilePosition() &lt;= end || <span class="keyword">in</span>.needAdditionalRecordAfterSplit()) &#123;</span><br><span class="line">			<span class="keyword">if</span> (pos == <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">new</span><span class="type">Size</span> = skipUtfByteOrderMark();</span><br><span class="line">				<span class="comment">//对行数进行累加</span></span><br><span class="line">				lineCount++;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">new</span><span class="type">Size</span> = <span class="keyword">in</span>.readLine(value, maxLineLength, maxBytesToConsume(pos));</span><br><span class="line">				pos += <span class="keyword">new</span><span class="type">Size</span>;</span><br><span class="line">				<span class="comment">//对行数进行累加</span></span><br><span class="line">				lineCount++;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> ((<span class="keyword">new</span><span class="type">Size</span> == <span class="number">0</span>) || (<span class="keyword">new</span><span class="type">Size</span> &lt; maxLineLength)) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"></span><br><span class="line">			<span class="comment">// line too long. try again</span></span><br><span class="line">			LOG.info(<span class="string">"Skipped line of size "</span> + <span class="keyword">new</span><span class="type">Size</span> + <span class="string">" at pos "</span> + (pos - <span class="keyword">new</span><span class="type">Size</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">new</span><span class="type">Size</span> == <span class="number">0</span>) &#123;</span><br><span class="line">			key = <span class="literal">null</span>;</span><br><span class="line">			value = <span class="literal">null</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+            <a href="/tags/MapReduce/" rel="tag"># MapReduce</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/求倒排索引2/" rel="next" title="求倒排索引2">
+                <i class="fa fa-chevron-left"></i> 求倒排索引2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/28/二次排序算法（可求不同类别下的Top-N）/" rel="prev" title="二次排序算法（可求不同类别下的Top N）">
+                二次排序算法（可求不同类别下的Top N） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/a.jpg"
+                alt="John" />
+            
+              <p class="site-author-name" itemprop="name">John</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhangjin80" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现思想"><span class="nav-number">1.</span> <span class="nav-text">实现思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapReduce主体逻辑"><span class="nav-number">2.</span> <span class="nav-text">MapReduce主体逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义输入组件"><span class="nav-number">3.</span> <span class="nav-text">自定义输入组件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JohnZhang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
